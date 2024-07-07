@@ -1,5 +1,6 @@
 function [sol_aprox,nr_it,err]=MetodaPicard(x0,tipphi,Nmax,epsilon,exact)
 nr_it=0;
+tic% masurarea timpului de executie
 while nr_it<=Nmax
     x1=Phi(x0,tipphi);
     nr_it=nr_it+1;
@@ -9,6 +10,8 @@ while nr_it<=Nmax
     end
     x0=x1;
 end
+timp=toc;% masurarea timpului de executie folosind comanda tic-toc
+fprintf('Timpul necesar este %f secunde\n',timp)
 if nr_it<Nmax
   sol_aprox=x1;
 else
